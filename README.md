@@ -31,7 +31,7 @@ Node.js + Express – RESTful API
 
 Sequelize ORM – Database operations
 
-MySQL / PostgreSQL – Relational database
+MySQL – Relational database
 
 Multer – File uploads (photos, signatures)
 
