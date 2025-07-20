@@ -1,0 +1,32 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap; /* responsive */
+    background-color: #fff; /* optional */
+  }
+  
+  .card-item {
+    width: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .card-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .card-item:hover {
+    transform: scale(1.05);
+  }
+  @media (max-width: 600px) {
+    .card-item {
+      width: 100%;
+    }
+  }
+    

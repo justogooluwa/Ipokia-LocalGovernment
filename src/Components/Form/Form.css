@@ -1,0 +1,113 @@
+.ipo-form-container {
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  color: #333;
+  border: 2px solid black; 
+}
+
+.ipo-form-container h2 {
+  color: #ff3333;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.ipo-form-container h3,
+.ipo-form-container h4 {
+  color: #008cba; /* sky blue */
+  text-align: center;
+  margin: 10px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #444;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+select{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.certify {
+  margin-top: 20px;
+  font-style: italic;
+  color: #444;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #008cba; /* sky blue */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #005f87;
+}
+.ipo-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1; /* spans both columns */
+}
+.photo-section {
+  text-align: center;
+  border: 1px dashed #ccc;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f9f9f9;
+}
+
+.webcam-preview {
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  margin: 10px 0;
+}
+
+.photo-preview img {
+  width: 150px;
+  margin-top: 10px;
+  border: 2px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+@media screen and (max-width: 768px) {
+  .ipo-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

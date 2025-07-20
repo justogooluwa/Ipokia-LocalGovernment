@@ -1,0 +1,184 @@
+.blueprint-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 70px;
+  align-items: flex-start;
+  justify-content: center;       /* ✅ Center content horizontally */
+  padding: 80px 20px;
+  max-width: 1200px;             /* ✅ Optional: control max width */
+  margin: 0 auto;                /* ✅ Center the wrapper itself */
+  background-color: #fff;
+}
+
+  
+  .blueprint-image img {
+    max-width: 100%;
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .blueprint-content {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .blueprint-content h1 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: #101010;
+    text-transform: none;
+    font-style: normal;
+    margin-bottom: 35px;
+    margin-top: 35px;
+  }
+  
+  .blueprint-content p {
+    font-family: 'Rubik', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+    text-transform: none;
+    font-style: normal;
+    max-width: 600px;
+    margin-bottom: 25px;
+  }
+  
+  .blueprint-goals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .goal-column h2 {
+    display: flex;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212529;;
+    text-transform: none;
+    font-style: normal;
+    margin: 10px 0;
+  }
+  
+  .goal-column svg {
+    color: orange;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .blueprint-stats {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0f4c2f;
+    padding: 40px 12px;
+    border-radius: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .stat-box {
+    flex: 1;
+    min-width: 195px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+  }
+  
+  .stat-box h2 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 46px;
+    color: #f57c00;
+    font-size: 36px;
+    margin: 0;
+  }
+  
+  .stat-box h2 span {
+    font-size: 24px;
+    margin-left: 5px;
+  }
+  
+  .stat-box p {
+    margin-top: 10px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    opacity: 0.85;
+  }
+
+  .government-wrapper {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+
+  .government-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: #00563B;
+    margin-bottom: 40px;
+  }
+  
+  .government-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .government-images img {
+    width: 380px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+  }
+  
+  .government-images img:hover {
+    transform: scale(1.05);
+  }
+  
+  
+  @media (max-width: 768px) {
+    .blueprint-wrapper {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .blueprint-image img {
+      width: 100%;
+    }
+  
+    .blueprint-goals {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .blueprint-stats {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .stat-box {
+        max-width: 300px;
+      }
+      .government-images img {
+        width: 90%;
+      }
+  }
+    

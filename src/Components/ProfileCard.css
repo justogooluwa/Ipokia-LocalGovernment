@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.profile-card {
+  padding: 20px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.profile-card img {
+  width: 450px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.profile-card-text {
+  flex: 1;
+}
+
+.profile-card-text h3 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-family: "Barlow", sans-serif;
+  color: #e67817;
+}
+
+.profile-card .title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  font-family: 'Rubik', sans-serif;
+}
+
+.profile-card .bio {
+  font-family: 'Rubik', sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #666;
+  text-transform: none;
+  font-style: normal;
+}
+
+
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .profile-card-text h3 {
+    font-size: 24px;
+  }
+
+  .profile-card .title {
+    font-size: 18px;
+  }
+
+  .profile-card .bio {
+    font-size: 15px;
+  }
+}

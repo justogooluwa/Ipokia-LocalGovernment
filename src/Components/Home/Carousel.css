@@ -1,0 +1,30 @@
+.carousel-wrapper {
+    text-align: center;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 150px;
+  }
+  
+  .title h1 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: #00563B;
+    margin-bottom: 40px;
+    padding: 40px 20px 20px;
+  }
+  
+  .carousel-slider {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .carousel-slide img {
+    width: 100vw;      /* Full viewport width */
+    height: 80vh;      /* Adjust height as needed */
+    object-fit: cover; /* Cover entire container */
+  }
+  

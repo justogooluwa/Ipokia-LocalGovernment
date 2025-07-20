@@ -1,0 +1,159 @@
+/* components/Scorecard.css */
+.scorecard-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 40px;
+    background-color: #f9f9f9;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden; /* To contain the diagonal line */
+  }
+  
+  .content-section {
+    flex: 1;
+    padding-right: 40px;
+    z-index: 2;
+  }
+  
+  .content-section h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .content-section .highlight {
+    color: #e67817; /* Orange color from the first image */
+  }
+  
+  .content-section p {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    max-width: 500px;
+  }
+  
+  .explore-button {
+    background-color: #e67817; /* Orange button */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .explore-button:hover {
+    background-color: #d65a00; /* Darker orange on hover */
+  }
+  
+  .image-section {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 400px; /* Ensure enough space for images */
+  }
+  
+  .person-image {
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    right: 50px;
+    z-index: 2;
+  }
+  
+  .building-image {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    z-index: 1;
+    border-radius: 50%; /* Match the circular frame from the first image */
+  }
+  
+  .hashtag {
+    position: absolute;
+    top: 150px;
+    right: 50px;
+    color: #e67817; /* Orange hashtag */
+    font-size: 1.2em;
+    font-weight: 700;
+    z-index: 3;
+  }
+  
+  .diagonal-line {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #e67817; /* Orange line */
+    transform: rotate(45deg);
+    transform-origin: top left;
+    top: -20%;
+    right: 50%;
+    z-index: 1;
+  }
+  
+  /* Background circle effect */
+  .image-section::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-color: #0d4823; /* Green background from the first image */
+    border-radius: 50%;
+    top: -50px;
+    right: -100px;
+    z-index: 0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .scorecard-container {
+      flex-direction: column;
+      text-align: center;
+      padding: 30px 20px;
+    }
+  
+    .content-section {
+      padding-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .image-section {
+      justify-content: center;
+      min-width: auto;
+    }
+  
+    .person-image {
+      position: static;
+      width: 200px;
+      margin-top: 20px;
+    }
+  
+    .building-image {
+      position: static;
+      width: 150px;
+      margin-top: 10px;
+    }
+  
+    .hashtag {
+      position: static;
+      margin-top: 10px;
+    }
+  
+    .diagonal-line {
+      display: none; /* Remove diagonal line on mobile */
+    }
+  
+    .image-section::before {
+      display: none; /* Remove circle on mobile */
+    }
+  }

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.page-layout {
+    position: relative;
+    width: 100%;
+    height: 285px; 
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .page-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .page-title {
+    position: absolute;
+    top: 50%;
+    left: 5%; /* Aligns closer to the left */
+    transform: translateY(-50%); /* Only center vertically */
+    color: white;
+    font-family: "Barlow", sans-serif;
+    font-weight: 700;
+    font-size: 52px;
+  }
+
+  @media (max-width: 768px) {
+    .page-title{
+      font-size: 30px;
+    }
+  }
+  
+  
+  
