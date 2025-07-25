@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Rate from "../Form/Rate";
+
 import axios from "axios";
 import "./AdminDashboard.css";
 import html2canvas from "html2canvas";
@@ -71,7 +71,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-    <Rate />
+    
     <div className="admin-dashboard">
       <h2>📋 All Submitted Forms</h2>
 
@@ -130,9 +130,10 @@ const AdminDashboard = () => {
               <td>{new Date(form.createdAt).toLocaleString()}</td>
               <td>
                 <button onClick={() => handleView(form)}>👁 View</button>
-                <a href={`/certificates/${form.id}`} target="_blank" rel="noopener noreferrer">
-    🖨 Full Page
-  </a>
+                <a href={`/certificates/${form.payref}`} target="_blank" rel="noopener noreferrer">
+  🖨 Full Page
+</a>
+
               </td>
             </tr>
           ))}

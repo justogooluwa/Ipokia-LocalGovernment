@@ -68,7 +68,7 @@ const Rate = () => {
         {rates.map((rate) => (
           <li key={rate.id}>
             ₦{rate.amount}{" "}
-            <button onClick={() => handleEdit(rate)}>Edit</button>
+            <button onClick={() => handleEdit(rate)} style={{ marginRight: "1rem" }}>Edit</button>
             <button onClick={() => handleDelete(rate.id)}>Delete</button>
           </li>
         ))}

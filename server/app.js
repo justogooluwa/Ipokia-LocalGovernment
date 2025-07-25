@@ -9,11 +9,21 @@ const Payhead = require("./models/payhead");
 const User = require("./models/user");
 const Form = require("./models/form");
 const Rate = require("./models/rate");
+const Admin = require("./models/admins")
+const bodyParser=require('body-parser')
+const { Op } = require("sequelize");
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
+const bcrypt =require('bcrypt')
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//app.use(express.static(path.join(__dirname, 'public')));
 
 // 🧱 Ensure Upload Folders Exist
 ["uploads/photos", "uploads/signatures"].forEach((dir) => {
@@ -70,6 +80,39 @@ app.post("/api/sendmail", async (req, res) => {
     res.send({ message: "Email sent" });
   } catch (err) {
     res.status(500).send({ message: "Failed to send email", err });
+  }
+});
+
+// Get all admins
+app.get("/api/admin", async (req, res) => {
+  try {
+    const admin = await Admin.findAll();
+    res.send(admin);
+  } catch (err) {
+    res.status(500).send({ message: "Failed to fetch admins" });
+  }
+});
+
+// Create new admin
+app.post("/api/admin", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const admin = await Admin.create({ email, password });
+    res.send(admin);
+  } catch (err) {
+    res.status(500).send({ message: "Failed to create admin" });
+  }
+});
+
+// Delete admin by ID
+app.delete("/api/admin/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deleted = await Admin.destroy({ where: { id } });
+    if (!deleted) return res.status(404).send({ message: "Admin not found" });
+    res.send({ message: "Admin deleted" });
+  } catch (err) {
+    res.status(500).send({ message: "Failed to delete admin" });
   }
 });
 
@@ -133,11 +176,17 @@ app.post("/api/payment", async (req, res) => {
     }
 
     // ✅ Save to Payhead
+    const saltRounds=10;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashedPayref = await bcrypt.hash(payref, salt);
+
     await Payhead.create({ payref, email, name, amount, copy, paydate, delivery });
+    //await Payhead.create({ hashedPayref, email, name, amount, copy, paydate, delivery });
 
     // ✅ Save to User with remainingCopies
     await User.create({ email, payref, remainingCopies: copy });
-
+   // await User.create({ email, hashedPayref, remainingCopies: copy });
+    console.log('Hashed '+hashedPayref);
     res.send({ message: "Payment saved successfully" });
   } catch (err) {
     res.status(500).send({ message: "Error saving payment", error: err });
@@ -191,18 +240,66 @@ app.post("/api/form", upload.fields([{ name: "photo" }, { name: "signature" }]),
 
 
 // 🔐 Login User via email + payref
+// app.post("/api/login", async (req, res) => {
+//   const { email, payref } = req.body;
+
+//   try {
+//     const user = await User.findOne({ where: { email, payref } });
+//     if (!user) return res.status(401).send({ message: "Invalid credentials" });
+
+//     res.send({ message: "Login successful", user });
+//   } catch (err) {
+//     res.status(500).send({ message: "Login failed", err });
+//   }
+// });
+
 app.post("/api/login", async (req, res) => {
-  const { email, payref } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ where: { email, payref } });
-    if (!user) return res.status(401).send({ message: "Invalid credentials" });
+    // User login
+    if (password.startsWith("IPK")) {
+      const user = await User.findOne({ where: { email, payref: password } });
+      if (!user) return res.status(401).send({ message: "Invalid user login" });
 
-    res.send({ message: "Login successful", user });
+      return res.send({ role: "user", user });
+    }
+
+    // Admin login with hashed password
+    const admin = await Admin.findOne({ where: { email } });
+    if (!admin) return res.status(401).send({ message: "Admin not found" });
+
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if (!isMatch) return res.status(401).send({ message: "Incorrect password" });
+
+    return res.send({ role: "admin", email: admin.email });
   } catch (err) {
+    console.error("Login error:", err);
     res.status(500).send({ message: "Login failed", err });
   }
 });
+
+
+
+app.get("/api/payheads", async (req, res) => {
+  const { fromDate, toDate } = req.query;
+  const where = {};
+
+  if (fromDate && toDate) {
+    where.createdAt = {
+      [Op.between]: [new Date(fromDate), new Date(toDate)],
+    };
+  }
+
+  try {
+    const payheads = await Payhead.findAll({ where });
+    res.json(payheads);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
 
 
 // 📄 Get all submitted forms (with optional date range)
@@ -231,16 +328,23 @@ app.get("/api/forms", async (req, res) => {
 });
 
 // 👇 Add this route in your Express server file
-app.get("/api/forms/:id", async (req, res) => {
-  const { id } = req.params;
+app.get("/api/forms/:payref", async (req, res) => {
+  const { payref } = req.params;
   try {
-    const form = await Form.findByPk(id);
-    if (!form) return res.status(404).json({ message: "Form not found" });
-    res.json(form);
+    const forms = await Form.findAll({ where: { payref } });
+
+    if (!forms || forms.length === 0) {
+      return res.status(404).send("No forms found");
+    }
+
+    res.json(forms);
   } catch (err) {
-    res.status(500).json({ message: "Error fetching form", error: err.message });
+    console.error("Error fetching forms by payref:", err);
+    res.status(500).send("Server error");
   }
 });
+
+
 
 
 // 🔁 Start Server

@@ -25,9 +25,9 @@ const Form = sequelize.define("form", {
   photo: DataTypes.STRING,
 });
 
-sequelize.sync().then(() => {
-    console.log("Database connected and models synced");
-  });
+// sequelize.sync().then(() => {
+//     console.log("Database connected and models synced");
+//   });
   
 
 module.exports = Form;

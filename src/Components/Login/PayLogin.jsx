@@ -3,7 +3,7 @@ import axios from "axios";
 import "./PayLogin.css";
 
 const PayLogin = () => {
-  const [formData, setFormData] = useState({ email: "", payref: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -14,27 +14,30 @@ const PayLogin = () => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3000/api/login", formData);
-      const { email, payref, remainingCopies } = res.data.user;
-  
-      if (remainingCopies <= 0) {
-        setMessage("You’ve used up all your form submissions.");
-        return;
+
+      if (res.data.role === "user") {
+        const { email, payref, remainingCopies } = res.data.user;
+        localStorage.setItem("email", email);
+        localStorage.setItem("payref", payref);
+        localStorage.setItem("remainingCopies", remainingCopies);
+        setMessage("Login successful!");
+        window.location.href = "/dashboard"; // User page
+      } else if (res.data.role === "admin") {
+        localStorage.setItem("adminEmail", res.data.email);
+        console.log("Trying to log in with:", formData.email, formData.password);
+
+
+        setMessage("Admin login successful!");
+        window.location.href = "/admin"; // Admin dashboard
       }
-  
-      setMessage("Login successful!");
-      localStorage.setItem("email", email);
-      localStorage.setItem("payref", payref);
-      localStorage.setItem("remainingCopies", remainingCopies);
-      
-      window.location.href = '/certificate';
     } catch (err) {
-      setMessage("Invalid email or payment reference.");
+      setMessage("Invalid email or password.");
     }
   };
-  
+
   return (
     <div className="login-container">
-      <h2>User Login</h2>
+      <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <input
           type="email"
@@ -46,9 +49,9 @@ const PayLogin = () => {
         />
         <input
           type="text"
-          name="payref"
-          placeholder="Enter Payment Reference"
-          value={formData.payref}
+          name="password"
+          placeholder="Enter Password or PayRef"
+          value={formData.password}
           onChange={handleChange}
           required
         />

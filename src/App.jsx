@@ -5,7 +5,7 @@ import Paylogin from "./Pages/Paylogin";
 import Certificate from "./Pages/Certificate";
 import Home from "./Pages/Home";
 import PayLogin from "./Components/Login/PayLogin";
-import AdminDashboard from "./Components/Dashboard/AdminDashboard";
+import AdminBoard from "./Components/Dashboard/AdminBoard";
 import Ifonyintedoward from "./Components/Ward/Ifonyintedoward";
 import Tubeward from "./Components/Ward/Tubeward";
 import Maunward from "./Components/Ward/Maunward";
@@ -38,13 +38,19 @@ import DeputyLeader from "./Components/Legislative/DeputyLeader";
 import Nulge from "./Components/Department/Nulge";
 import Waters from "./Components/Supervisors/Waters";
 import CertificatePageWrapper from "./Components/Form/CertificatePageWraper";
+import UserDashboard from "./Components/Dashboard/UserDashboard";
+import Rate from "./Components/Form/Rate";
+import AdminDashboard from "./Components/Dashboard/AdminDashboard";
+import PayheadBreakdown from "./Components/Dashboard/FinacialReport";
+import AdminManager from "./Components/Dashboard/AdminRegistration";
 import "./App.css";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const hideNavbar =
-    ["/login", "/admin", "/certificate"].includes(location.pathname.toLowerCase()) ||
-    /^\/certificates\/\w+$/i.test(location.pathname);
+  ["/login", "/admin", "/certificate", "/dashboard", "/admin/forms", "/admin/rate", "/admin/financial-report","/admin/manager"].includes(location.pathname.toLowerCase()) ||
+  /^\/certificates\/[\w-]+$/i.test(location.pathname); // allow alphanumeric payref like OG20250719121822
+  
 
   return (
     <>
@@ -63,7 +69,11 @@ function App() {
           <Route path="/paylogin" element={<Paylogin />} />
           <Route path="/certificate" element={<Certificate />} />
           <Route path="/login" element={<PayLogin />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin" element={<AdminBoard />} />
+          <Route path="/admin/rate" element={<Rate />} />
+          <Route path="/admin/forms" element={<AdminDashboard />} />
+          <Route path="/admin/financial-report" element={<PayheadBreakdown />} />
+          <Route path="/admin/manager" element={<AdminManager />} />
           <Route path="/ifonyintedoward" element={<Ifonyintedoward />} />
           <Route path="/tubeward" element={<Tubeward />} />
           <Route path="/maunward" element={<Maunward />} />
@@ -95,7 +105,10 @@ function App() {
           <Route path="/deputyleader" element={<DeputyLeader />} />
           <Route path="/nulge" element={<Nulge />} />
           <Route path="/waters" element={<Waters />} />
-          <Route path="/certificates/:id" element={<CertificatePageWrapper />} />
+          <Route path="/certificates/:payref" element={<CertificatePageWrapper />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
+
         </Routes>
       </Layout>
     </Router>

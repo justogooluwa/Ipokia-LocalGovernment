@@ -4,18 +4,29 @@ import CertificatePage from "./Certificates";
 import axios from "axios";
 
 const CertificatePageWrapper = () => {
-  const { id } = useParams();
-  const [form, setForm] = useState(null);
+  const { payref } = useParams();
+  const [forms, setForms] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/api/forms/${id}`)
-      .then((res) => setForm(res.data))
-      .catch((err) => console.error("Error fetching form", err));
-  }, [id]);
-  
+    if (!payref) return;
 
-  return <CertificatePage form={form} />;
+    axios
+      .get(`http://localhost:3000/api/forms/${payref}`)
+      .then((res) => setForms(res.data))
+      .catch((err) => console.error("Error fetching certificate", err));
+  }, [payref]);
+
+  if (!forms.length) return <p>No certificate found for {payref}</p>;
+
+  return (
+    <>
+      {forms.map((form, i) => (
+        <div key={i} style={{ pageBreakAfter: "always" }}>
+          <CertificatePage form={form} />
+        </div>
+      ))}
+    </>
+  );
 };
 
 export default CertificatePageWrapper;

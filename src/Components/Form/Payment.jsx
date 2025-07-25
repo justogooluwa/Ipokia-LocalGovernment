@@ -23,7 +23,8 @@ const Paymemt = () => {
     const updatedData = { ...formData, [name]: value };
   
     if (name === "copy" && formData.rate) {
-      const total = parseInt(value || 0) * parseInt(formData.rate);
+      // Adding 100 Naira Service Charge to pay Stack
+      const total = (parseInt(value || 0) * parseInt(formData.rate))+100;
       updatedData.amount = total.toString();
     }
   

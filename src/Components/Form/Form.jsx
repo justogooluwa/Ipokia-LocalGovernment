@@ -32,12 +32,12 @@ const payref = localStorage.getItem("payref") || "";
 
   useEffect(() => {
     const remaining = parseInt(localStorage.getItem("remainingCopies"));
-    if (isNaN(remaining) || remaining <= 0) {
-      alert("❌ You’ve used up all your form submissions.");
-      localStorage.clear(); // log them out properly
-      window.location.replace("/");
+    if (remaining <= 0) {
+      alert("Access denied. You’ve used all your form submissions.");
+      window.location.href = "/dashboard";
     }
   }, []);
+  
   
 
   const [photo, setPhoto] = useState(null);
@@ -88,7 +88,7 @@ const payref = localStorage.getItem("payref") || "";
       localStorage.setItem("remainingCopies", remaining);
     
       if (remaining <= 0) {
-        alert("You have used all your form submissions. You will be logged out.");
+        alert("You have used all your form submissions. ");
         localStorage.removeItem("email");
         localStorage.removeItem("payref");
         localStorage.removeItem("remainingCopies");
@@ -104,7 +104,7 @@ const payref = localStorage.getItem("payref") || "";
   }    
   return (
     <div className="ipo-form-container">
-      <h2>IPOIKIA LOCAL GOVERNMENT</h2>
+      <h2>IPOKIA LOCAL GOVERNMENT</h2>
       <h3>Application Form for Certificate of Origin</h3>
 
       {/* ✅ Webcam Capture First */}
