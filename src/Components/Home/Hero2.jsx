@@ -17,14 +17,11 @@ function HeroSection() {
         <h1>
           Ipokia,Safe
           <br />
-          <span className="underline"> Haven for Investors</span>
+          <span className="underline"> Land of Opportunities</span>
         </h1>
         <p className="quote">
-          “Our State is nationally known as one of the most peaceful States in
-          the nation. We will work hard to ensure that this critical element of
-          the Social Contract is maintained, so our people can continue to live
-          in peace. Security of lives and property is the first order of
-          business for government and we will follow this strictly.”
+          “Ipokia is a land of opportunities primarily for Agriculture Primarily, Poultry Farming, Garri and Palm Oil. 
+          The vast land is arrable and peaceful. There is adequate security for Investors ”
         </p>
       </div>
     </div>

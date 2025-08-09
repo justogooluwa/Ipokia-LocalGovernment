@@ -23,6 +23,7 @@ const Form = sequelize.define("form", {
   identifierfullname: DataTypes.STRING,
   rank: DataTypes.STRING,
   photo: DataTypes.STRING,
+  
 });
 
 // sequelize.sync().then(() => {

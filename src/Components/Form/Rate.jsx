@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Rate.css"
 
 const Rate = () => {
   const [amount, setAmount] = useState("");
@@ -59,7 +60,7 @@ const Rate = () => {
           placeholder="Enter rate amount"
           required
         />
-        <button type="submit">{editId ? "Update" : "Submit"}</button>
+        <button className="submits" type="submit">{editId ? "Update" : "Submit"}</button>
       </form>
 
       {message && <p>{message}</p>}

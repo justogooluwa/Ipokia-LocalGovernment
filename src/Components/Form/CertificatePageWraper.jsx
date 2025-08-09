@@ -18,13 +18,33 @@ const CertificatePageWrapper = () => {
 
   if (!forms.length) return <p>No certificate found for {payref}</p>;
 
+  // Check if Section II is complete
+  const isSection2Complete = (form) =>
+    form.identifiername &&
+    form.town &&
+    form.years &&
+    form.identifierfullname &&
+    form.rank;
+  
   return (
     <>
-      {forms.map((form, i) => (
-        <div key={i} style={{ pageBreakAfter: "always" }}>
-          <CertificatePage form={form} />
-        </div>
-      ))}
+      {forms.map((form, i) => {
+        if (!isSection2Complete(form)) {
+          return (
+            <div key={i}>
+              <h3>Certificate for {form.name} is pending</h3>
+              <p>Section II is not completed. Please contact admin.</p>
+            </div>
+          );
+        }
+  
+        const serialNumber = `LG-${String(form.id).padStart(5, "0")}`;
+        return (
+          <div key={i} style={{ pageBreakAfter: "always" }}>
+            <CertificatePage form={form} serial={serialNumber} />
+          </div>
+        );
+      })}
     </>
   );
 };

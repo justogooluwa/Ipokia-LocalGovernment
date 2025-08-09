@@ -2,9 +2,20 @@ import React from "react";
 import "./Certificate.css";
 import Logo from "../../assets/logo.jpg"
 
-const CertificatePage = ({ form }) => {
+const CertificatePage = ({ form, serial }) => {
   if (!form) return <p>No data found</p>;
-
+  function getDayWithSuffix(date) {
+    const day = date.getDate();
+    if (day % 10 === 1 && day !== 11) return day + "st";
+    if (day % 10 === 2 && day !== 12) return day + "nd";
+    if (day % 10 === 3 && day !== 13) return day + "rd";
+    return day + "th";
+  }
+  
+  function getMonthName(date) {
+    return date.toLocaleString("default", { month: "long" }); // e.g., "August"
+  }
+ 
 //   function formatDateToWords(dateStr) {
 //     const date = new Date(dateStr);
   
@@ -30,24 +41,40 @@ const CertificatePage = ({ form }) => {
     <>
     <div className="certificate-page">
       <div className="certificate-modal">
+      <div className="certificate-watermark-pattern"></div>
         <div className="certificate-header">
           <img
             src={Logo}
             alt="Logo"
             className="logo"
           />
+           <img
+  src={`http://localhost:3000/uploads/${form.photo}`}
+  className="passport-img"
+  alt="Photo"
+  crossOrigin="anonymous"
+/>
           <h2>IPOKIA LOCAL GOVERNMENT COUNCIL</h2>
-          <h1>OGUN STATE, NIGERIA </h1>
-          <p className="subheading">Certificate of Local Government of Origin</p>
-          <p className="subheading">we hereby certify that</p>
-          <h3 className="name">{form.name}</h3>
+          <p>Ipokia Ogun State of Nigeria </p>
+          <h1 className="subheading">Certificate of Local Government of Origin</h1>
+          {/* <p className="subheading">we hereby certify that</p>
+          <h3 className="name">{form.name}</h3> */}
+          <p className="serial-number">OG/LGC/PKA</p>
+          <p className="serial-number">Serial No: {serial}</p>
+
         </div>
 
         <div className="certificate-body">
         <h4>
-  This certificate is issued in affirmation of <strong>{form.name}</strong>'s origin, as recorded in the
-  official register of Ipokia Local Government Council, and may be tendered as proof of local
-  government of origin for administrative or official purposes.
+  This is to certify that from enquiry made, the person photograph who is affixed <strong>{form.name}</strong> of 
+      <strong> {form.address}</strong>, of native of <strong>{form.town}</strong> 
+  in Ipokia Local Government Area of Ogun State, Nigeria. Ancestral, Historical and Administrative records verified 
+  by the Local Government attested to this Fact.
+</h4>
+<h4>
+  This Certificate of origin is issued today under my hand and the Public seal of Ipokia Local Government at
+  Ipokia this <strong>{getDayWithSuffix(new Date())}</strong> day of <strong>{getMonthName(new Date())}</strong> year <strong>{new Date().getFullYear()}</strong>
+   
 </h4>
 
           {/* <p><strong>Email:</strong> {form.email}</p>
@@ -56,22 +83,31 @@ const CertificatePage = ({ form }) => {
           <p><strong>Address:</strong> {form.address}</p>
           <p><strong>Date of Birth:</strong> {form.dob}</p> */}
 
-<p className="date-issued">
-            Date Issued: {new Date(form.createdAt).toDateString()}
-          </p>
 
 
           <div className="certificate-footer">
-            <p>Signed:</p>
-            <img
-  src={`http://localhost:3000/uploads/${form.signature}`}
-  className="signature-img"
-  alt="Signature"
-  crossOrigin="anonymous"
-/>
+  <div className="signature-block">
+    <img
+      src={`http://localhost:3000/uploads/${form.signature}`}
+      className="signature-img"
+      alt="Signature"
+      crossOrigin="anonymous"
+    />
+    <p className="registrar">Secretary Ipokia Local Government</p>
+  </div>
 
-            <p className="registrar">Secretary To The Local Government</p>
-          </div>
+  <div className="signature-block">
+    <img
+      src={`http://localhost:3000/uploads/${form.signature}`}
+      className="signature-img"
+      alt="Signature"
+      crossOrigin="anonymous"
+    />
+    <p className="registrar">Chairman Ipokia Local Government</p>
+  </div>
+</div>
+
+
           
         </div>
       </div>

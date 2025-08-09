@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Finacial.css"
 
 const PayheadBreakdown = () => {
   const [payheads, setPayheads] = useState([]);
@@ -26,6 +27,7 @@ const PayheadBreakdown = () => {
 
   return (
     <div style={{ padding: "20px" }}>
+      <div className="finacial-report">
       <h2>Financial Report</h2>
 
       <div style={{ marginBottom: "1rem" }}>
@@ -54,16 +56,18 @@ const PayheadBreakdown = () => {
                 <td>{index + 1}</td>
                 <td>{item.name}</td>
                 <td>{item.payref}</td>
-                <td>{Number(item.amount).toLocaleString()}</td>
+                <td>#{Number(item.amount).toLocaleString()}</td>
               </tr>
             ))}
             <tr>
               <td colSpan="2" style={{ fontWeight: "bold" }}>Total</td>
+              <td></td>
               <td style={{ fontWeight: "bold" }}>₦{total.toLocaleString()}</td>
             </tr>
           </tbody>
         </table>
       )}
+      </div>
     </div>
   );
 };

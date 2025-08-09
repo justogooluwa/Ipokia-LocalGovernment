@@ -74,8 +74,8 @@ function Navbar() {
 <div className="dropdown">
   <NavLink to="#" className={() => ""}>Legislatives <FaChevronDown style={{ marginLeft: 4 }} /></NavLink>
   <div className="dropdown-content">
-    <NavLink to="#" className={() => ""}>Leader</NavLink>
-    <NavLink to="#" className={() => ""}>Deputy Leader</NavLink>
+    <NavLink to="/ifonyintedoward" className={() => ""}>Leader</NavLink>
+    <NavLink to="/tubeward" className={() => ""}>Deputy Leader</NavLink>
     <NavLink to="/deputyleader" className={() => ""}>Majority Leader</NavLink>
     <NavLink to="/ilase" className={() => ""}>Chief Whip</NavLink>
 
@@ -161,16 +161,14 @@ function Navbar() {
   <NavLink to="/Paylogin" className={({ isActive }) => isActive ? "active" : ""}>Certificate of Origin</NavLink>
   {/* <NavLink to="/certificate" className={({ isActive }) => isActive ? "active" : ""}>Certificate of Origin</NavLink> */}
 </div>
-
+<NavLink to="/login" className="login-link" onClick={closeMenu}>
+    <button className="login-btn">Login</button>
+  </NavLink>
 
 
         </div>
 
-        {/* <span className="search-icon">🔍</span> */}
-        <NavLink to="/login" >
-    <button>Login</button>
-  </NavLink>
-        
+       
       </div>
     </>
   );

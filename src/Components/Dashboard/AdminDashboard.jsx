@@ -154,7 +154,7 @@ const AdminDashboard = () => {
         <div className="form-header">
           <div>
             <h2>IPOKIA LOCAL GOVERNMENT</h2>
-            <p>Office of Executive Chairman</p>
+            <p>Office of Chairman</p>
             <p>APPLICATION FORM FOR CERTIFICATE OF ORIGIN</p>
           </div>
           <div className="photo-block">
@@ -213,14 +213,14 @@ const AdminDashboard = () => {
           </p>
 
           <p>
-            I HEREBY IDENTIFY THAT MISS/MR/MRS <strong>{selectedForm.identifiername}</strong>, 
-            WHOSE NAME APPEARS, IS AN INDIGENE OF <strong>{selectedForm.town}</strong> 
+            I HEREBY IDENTIFY THAT MISS/MR/MRS <strong>Identifier: {selectedForm.identifiername || "Not filled yet"}</strong>, 
+            WHOSE NAME APPEARS, IS AN INDIGENE OF <strong> {selectedForm.town || "Not filled yet"}</strong> 
             IN IPOKIA LOCAL GOVERNMENT AREA OF OGUN STATE OF NIGERIA. (HE/SHE) IS WELL KNOWN TO ME FOR THE PAST 
-            <strong> {selectedForm.years}</strong> YEARS.
+            <strong> {selectedForm.years || "Not filled yet"}</strong> YEARS.
           </p>
 
-          <p><strong>FULL NAME:</strong> {selectedForm.identifierfullname}</p>
-          <p><strong>RANK:</strong> {selectedForm.rank}</p>
+          <p><strong>FULL NAME:</strong> {selectedForm.identifierfullname || "Not filled yet"}</p>
+          <p><strong>RANK:</strong> {selectedForm.rank || "Not filled yet"}</p>
           <p><strong>SIGNATURE:</strong> ________________________________</p>
         </div>
 

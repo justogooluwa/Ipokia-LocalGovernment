@@ -43,13 +43,18 @@ import Rate from "./Components/Form/Rate";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard";
 import PayheadBreakdown from "./Components/Dashboard/FinacialReport";
 import AdminManager from "./Components/Dashboard/AdminRegistration";
+import AdminFillSection2 from "./Components/Dashboard/AdminForm2";
+import AdminLayout from "./Components/Dashboard/AdminLayout";
 import "./App.css";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const hideNavbar =
-  ["/login", "/admin", "/certificate", "/dashboard", "/admin/forms", "/admin/rate", "/admin/financial-report","/admin/manager"].includes(location.pathname.toLowerCase()) ||
-  /^\/certificates\/[\w-]+$/i.test(location.pathname); // allow alphanumeric payref like OG20250719121822
+  ["/login", "/admin", "/certificate", "/dashboard", "/admin/forms", "/admin/rate", "/admin/financial-report", "/admin/manager"]
+    .includes(location.pathname.toLowerCase()) ||
+  /^\/certificates\/[\w-]+$/i.test(location.pathname) ||
+  /^\/admin\/fill-section2\/\d+$/i.test(location.pathname); // ✅ Add this line for fill-section2
+
   
 
   return (
@@ -69,11 +74,14 @@ function App() {
           <Route path="/paylogin" element={<Paylogin />} />
           <Route path="/certificate" element={<Certificate />} />
           <Route path="/login" element={<PayLogin />} />
-          <Route path="/admin" element={<AdminBoard />} />
-          <Route path="/admin/rate" element={<Rate />} />
-          <Route path="/admin/forms" element={<AdminDashboard />} />
-          <Route path="/admin/financial-report" element={<PayheadBreakdown />} />
-          <Route path="/admin/manager" element={<AdminManager />} />
+          <Route path="/admin" element={<AdminLayout/>} >
+          <Route index element={<AdminBoard />}/>
+          <Route path="rate" element={<Rate />} />
+          <Route path="forms" element={<AdminDashboard />} />
+          <Route path="financial-report" element={<PayheadBreakdown />} />
+          <Route path="manager" element={<AdminManager />} />
+          <Route path="fill-section2/:id" element={<AdminFillSection2 />} />
+           </Route>
           <Route path="/ifonyintedoward" element={<Ifonyintedoward />} />
           <Route path="/tubeward" element={<Tubeward />} />
           <Route path="/maunward" element={<Maunward />} />

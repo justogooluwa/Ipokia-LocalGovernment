@@ -48,7 +48,7 @@ const PayLogin = () => {
           required
         />
         <input
-          type="text"
+          type="password"
           name="password"
           placeholder="Enter Password or PayRef"
           value={formData.password}

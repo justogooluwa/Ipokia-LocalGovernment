@@ -38,6 +38,10 @@ const sequelize = require('../db');
 const bcrypt = require("bcrypt");
 
 const Admin = sequelize.define("admin", {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   email: {
     type: DataTypes.STRING,
     allowNull: false,

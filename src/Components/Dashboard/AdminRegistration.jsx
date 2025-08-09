@@ -1,10 +1,11 @@
 // AdminManager.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./AdminRegistration.css"
 
 const AdminManager = () => {
   const [admins, setAdmins] = useState([]);
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const AdminManager = () => {
     try {
       await axios.post("http://localhost:3000/api/admin", form);
       setMessage("Admin created successfully");
-      setForm({ email: "", password: "" });
+      setForm({name: "", email: "", password: "" });
       fetchAdmins();
     } catch (err) {
       setMessage("Failed to create admin");
@@ -46,8 +47,17 @@ const AdminManager = () => {
 
   return (
     <div>
+      <div className="admin-manager-container">
       <h2>Register New Admin</h2>
       <form onSubmit={handleRegister}>
+      <input
+          type="text"
+          name="name"
+          placeholder="Admin Name"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          required
+        />
         <input
           type="email"
           name="email"
@@ -73,13 +83,14 @@ const AdminManager = () => {
       <ul>
         {admins.map((admin) => (
           <li key={admin.id}>
-            {admin.email}
+            {admin.name}
             <button onClick={() => handleDelete(admin.id)} style={{ marginLeft: "1rem" }}>
               Delete
             </button>
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };

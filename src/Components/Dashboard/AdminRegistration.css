@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+.admin-manager-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+    font-family: "Roboto Condensed", sans-serif;
+    background-color: #f5f5f5; /* optional */
+  }
+  
+  .admin-manager-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 300px;
+  }
+  
+  .admin-manager-container input,
+  .admin-manager-container button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .admin-manager-container ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .admin-manager-container li {
+    margin-bottom: 10px;
+  }
+  

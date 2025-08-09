@@ -19,38 +19,38 @@ function BluePrint() {
       <div className="blueprint-content">
         <h1>Economic Blueprint Goals</h1>
         <p>
-          Hon. Johnson Akohmeh is embarking on a transformative journey to bring
-          about positive change in every aspect of our society.
+          Hon. Johnson Akohomeh is embarking on a transformative journey to bring
+          about shared prosperity and opportunities for all Ipokia Descents.
         </p>
 
         <div className="blueprint-goals">
           <div className="goal-column">
-            <h2><HiOutlineCheck /> Poverty Reduction</h2>
-            <h2><HiOutlineCheck /> Job Creation</h2>
-            <h2><HiOutlineCheck /> Price Stability</h2>
-            <h2><HiOutlineCheck /> Sustainable Economic Growth</h2>
+            <h2><HiOutlineCheck /> Roads</h2>
+            <h2><HiOutlineCheck /> Revitalized Agriculture</h2>
+            <h2><HiOutlineCheck /> Quality Education</h2>
+            <h2><HiOutlineCheck /> Enhanced Security</h2>
           </div>
 
           <div className="goal-column">
-            <h2><HiOutlineCheck /> Improved Standard of Living</h2>
-            <h2><HiOutlineCheck /> Environmental Sustainability</h2>
-            <h2><HiOutlineCheck /> Highly educated, healthy & skilled populace</h2>
-            <h2><HiOutlineCheck /> Safety & Security</h2>
+            <h2><HiOutlineCheck /> Improved Primary Healthcare</h2>
+            <h2><HiOutlineCheck /> Youth/Traders Employment</h2>
+            <h2><HiOutlineCheck /> Stronger Intergovernmental Ties</h2>
+            {/* <h2><HiOutlineCheck /> Safety & Security</h2> */}
           </div>
 
           {/* STATS SECTION */}
          <div className="blueprint-stats">
          <div className="stat-box">
-         <h2>37<span>years</span></h2>
-         <p>Years of Foundation</p>
+         <h2>49<span>years</span></h2>
+         <p>Years of Existence</p>
          </div>
          <div className="stat-box">
-          <h2>7<span>m</span></h2>
+          <h2>151<span>thousand</span></h2>
           <p>Population</p>
          </div>
            <div className="stat-box">
-           <h2>31</h2>
-          <p>Local Government Areas</p>
+           <h2>12</h2>
+          <p>Wards</p>
          </div>
         </div>
         

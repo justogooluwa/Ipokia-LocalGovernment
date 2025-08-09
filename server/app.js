@@ -96,8 +96,8 @@ app.get("/api/admin", async (req, res) => {
 // Create new admin
 app.post("/api/admin", async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const admin = await Admin.create({ email, password });
+    const { name, email, password } = req.body;
+    const admin = await Admin.create({name, email, password });
     res.send(admin);
   } catch (err) {
     res.status(500).send({ message: "Failed to create admin" });
@@ -237,6 +237,44 @@ app.post("/api/form", upload.fields([{ name: "photo" }, { name: "signature" }]),
     res.status(500).send("Error saving form");
   }
 });
+// 📥 Get form by ID
+app.get("/api/form/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const form = await Form.findByPk(id);
+    if (!form) return res.status(404).send("Form not found");
+
+    res.json(form);
+  } catch (err) {
+    console.error("Error fetching form by ID:", err);
+    res.status(500).send("Server error");
+  }
+});
+
+// Update Section II only
+app.put("/api/form/:id/section2", async (req, res) => {
+  const { id } = req.params;
+  const { identifiername, town, years, identifierfullname, rank } = req.body;
+
+  try {
+    const form = await Form.findByPk(id);
+    if (!form) return res.status(404).send("Form not found");
+
+    // Only update Section II fields
+    form.identifiername = identifiername;
+    form.town = town;
+    form.years = years;
+    form.identifierfullname = identifierfullname;
+    form.rank = rank;
+
+    await form.save();
+    res.send("Section II updated successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error updating Section II");
+  }
+});
+
 
 
 // 🔐 Login User via email + payref

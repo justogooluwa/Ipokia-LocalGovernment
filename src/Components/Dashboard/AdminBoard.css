@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap');
+
+html, body {
+    height: 100%;
+  }
+  
+  .admin-container {
+    display: flex;
+    min-height: 100vh; /* full screen height */
+  }
+  
+  .dash {
+    width: 20%;
+    background: rgb(167, 231, 167);
+    padding: 20px;
+  }
+
+  .admin-btn{
+    font-family: "Signika", sans-serif;
+    margin-top: 30px;
+    cursor: pointer;
+}
+  
+  .admin-content {
+    width: 80%;
+    padding: 20px;
+  }
+  

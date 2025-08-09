@@ -23,11 +23,11 @@ const payref = localStorage.getItem("payref") || "";
     identification: "",
     applicantno: "",
     signature: "",
-    identifiername: "",
-    town: "",
-    years: "",
-    identifierfullname: "",
-    rank: "",
+    // identifiername: "",
+    // town: "",
+    // years: "",
+    // identifierfullname: "",
+    // rank: "",
   });
 
   useEffect(() => {
@@ -245,7 +245,7 @@ const payref = localStorage.getItem("payref") || "";
             )}
           </div>
 
-          <div className="form-group full-width">
+          {/* <div className="form-group full-width">
             <h4>SECTION II: Identification of Applicant</h4>
           </div>
 
@@ -272,7 +272,7 @@ const payref = localStorage.getItem("payref") || "";
           <div className="form-group">
             <label>Rank</label>
             <input name="rank" type="text" onChange={handleChange} required/>
-          </div>
+          </div> */}
 
           <div className="form-group full-width">
             <button type="submit">Submit</button>
