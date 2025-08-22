@@ -1,9 +1,13 @@
 import ProfileCard from "../ProfileCard2";
 import PageLayout from "../PageLayout";
 import chairman from "../../assets/fbimg2.jpg"
+import { Helmet } from "react-helmet-async";
 function Chairman(){
     return(
         <>
+        <Helmet>
+            <title>Chairman - Ipokia Local Government</title>
+        </Helmet>
         <PageLayout title='THE CHAIRMAN' />
         <div className="page-grid">
          <ProfileCard 

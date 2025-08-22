@@ -1,0 +1,126 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Merienda:wght@300..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Port+Lligat+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&display=swap');
+.header {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #2c3e50;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 30px;
+  }
+  p{
+    font-family: "Port Lligat Sans", sans-serif;
+    font-size: 20px;
+  }
+  
+  ol {
+    padding-left: 30px;
+  }
+  li{
+    font-family: "Port Lligat Sans", sans-serif;
+    font-size: 18px;
+  }
+  
+  .health-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: "Port Lligat Sans", sans-serif;
+  }
+  
+  .health-table th, .health-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .health-table th {
+    background-color: #2c3e50;
+    color: white;
+  }
+  
+  .health-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .health-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Tablet view (up to 1024px) */
+@media (max-width: 1024px) {
+    .header {
+      font-size: 24px;
+    }
+  
+    p {
+      font-size: 18px;
+    }
+  
+    li {
+      font-size: 16px;
+    }
+  
+    .health-table th, .health-table td {
+      padding: 6px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Mobile view (up to 768px) */
+  @media (max-width: 768px) {
+    .header {
+      font-size: 20px;
+      text-align: center;
+    }
+  
+    p {
+      font-size: 20px;
+      line-height: 1.4;
+      text-align: justify;
+    }
+  
+    ol {
+      padding-left: 30px;
+    }
+  
+    li {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  
+    /* Make table scrollable on mobile */
+    .health {
+      overflow-x: auto;
+    }
+  
+    .health-table {
+      min-width: 500px;
+    }
+  
+    .health-table th, .health-table td {
+      padding: 5px;
+      font-size: 12px;
+    }
+  }
+  
+  /* Extra small mobile (up to 480px) */
+  @media (max-width: 480px) {
+    .header {
+      font-size: 20px;
+    }
+  
+    p {
+      font-size: 20px;
+    }
+  
+    li {
+      font-size: 18px;
+    }
+  
+    .health-table th, .health-table td {
+      font-size: 11px;
+      padding: 4px;
+    }
+  }
+  

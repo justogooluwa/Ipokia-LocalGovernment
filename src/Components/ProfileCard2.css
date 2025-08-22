@@ -54,6 +54,8 @@
   font-size: 15px;
   color: #444;
   line-height: 1.6;
+  text-align: left; /* ✅ Ensure list is left-aligned */
+  list-style-type: decimal;
 }
 
 .duties-list ul {
@@ -85,6 +87,6 @@
     font-size: 15px;
   }
   .duties-list{
-    list-style-type: none;
+    list-style-type: decimal;
   }
 }

@@ -3,11 +3,15 @@ import Card from "../Components/Home/Card";
 import BluePrint from "../Components/Home/BluePrint";
 import Carousel from "../Components/Home/Carousel";
 import HeroSection from "../Components/Home/Hero2";
+import { Helmet } from "react-helmet-async";
 
 
 function Home(){
     return(
         <>
+        <Helmet>
+            <title>Homepage - Ipokia Local Government</title>
+        </Helmet>
         <Hero />
         <Card />
         <BluePrint />

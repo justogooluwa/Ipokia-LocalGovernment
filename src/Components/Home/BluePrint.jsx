@@ -41,16 +41,16 @@ function BluePrint() {
           {/* STATS SECTION */}
          <div className="blueprint-stats">
          <div className="stat-box">
-         <h2>49<span>years</span></h2>
+         <h2>29<span>years</span></h2>
          <p>Years of Existence</p>
          </div>
          <div className="stat-box">
-          <h2>151<span>thousand</span></h2>
+          <h2>300<span>thousand</span></h2>
           <p>Population</p>
          </div>
            <div className="stat-box">
            <h2>12</h2>
-          <p>Wards</p>
+          <p>Political Wards</p>
          </div>
         </div>
         

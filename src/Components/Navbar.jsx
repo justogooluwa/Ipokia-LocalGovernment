@@ -127,9 +127,9 @@ function Navbar() {
 </div>
 
 <div className="dropdown">
-  <NavLink to="#" className={() => ""}>NewsUpdate <FaChevronDown style={{ marginLeft: 4 }} /></NavLink>
+  <NavLink to="#" className={() => ""}>Info <FaChevronDown style={{ marginLeft: 4 }} /></NavLink>
   <div className="dropdown-content">
-    <NavLink to="#" className={() => ""}>News</NavLink>
+    <NavLink to="/aboutipokia" className={() => ""}>AboutIpokia</NavLink>
     <NavLink to="#" className={() => ""}>Press</NavLink>
   </div>
 </div>
@@ -142,7 +142,7 @@ function Navbar() {
           <NavLink to="#" className={() => ""}>Departmental Heads<FaChevronRight style={{ marginLeft: 4 }} /></NavLink>
           <div className="nested-dropdown-content">
           <NavLink to="#" className={() => ""}>Director General Services and Administation(DGSA)</NavLink>
-            <NavLink to="#" className={() => ""}>Director of Finance / Treasurer</NavLink>
+            <NavLink to="/finance" className={() => ""}>Director of Finance / Treasurer</NavLink>
             <NavLink to="/works" className={() => ""}>Director of Works & Housing</NavLink>
             <NavLink to="/sport" className={() => ""}>Director of Information Education & Sports</NavLink>
             <NavLink to="/budget" className={() => ""}>Director of Budget Research Planning & Statistics</NavLink>

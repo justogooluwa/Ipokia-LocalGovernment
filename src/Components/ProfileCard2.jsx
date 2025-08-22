@@ -5,7 +5,7 @@ const ProfileCard2 = ({ name, title, bio, image, list, lists, bios }) => {
   return (
     <div className="profile-cards">
       <img src={image} alt={name} />
-      <div className="profile-card-text">
+      <div className="profile-cards-text">
         <h3>{name}</h3>
         <p className="title">{title}</p>
         <p className="bio">{bio}</p>
@@ -19,7 +19,7 @@ const ProfileCard2 = ({ name, title, bio, image, list, lists, bios }) => {
         )}
         <p className="bio">{bios}</p>
 
-        {list && (
+        {lists && (
           <ul className="duties-list">
             {lists.map((item, index) => (
               <li key={index}>{item}</li>

@@ -45,6 +45,8 @@ import PayheadBreakdown from "./Components/Dashboard/FinacialReport";
 import AdminManager from "./Components/Dashboard/AdminRegistration";
 import AdminFillSection2 from "./Components/Dashboard/AdminForm2";
 import AdminLayout from "./Components/Dashboard/AdminLayout";
+import Finance from "./Components/Department/Finance";
+import AboutIpokia from "./Pages/AboutIpokia";
 import "./App.css";
 
 const Layout = ({ children }) => {
@@ -116,7 +118,8 @@ function App() {
           <Route path="/certificates/:payref" element={<CertificatePageWrapper />} />
           <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="/dashboard" element={<UserDashboard />} />
-
+          <Route path="/finance" element={<Finance />} />
+          <Route path="/aboutipokia" element={<AboutIpokia />} />
         </Routes>
       </Layout>
     </Router>
