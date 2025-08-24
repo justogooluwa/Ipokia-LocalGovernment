@@ -14,26 +14,29 @@ const PayLogin = () => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3000/api/login", formData);
-
+  
       if (res.data.role === "user") {
+        // destructure properly from res.data.user
         const { email, payref, remainingCopies } = res.data.user;
+  
         localStorage.setItem("email", email);
         localStorage.setItem("payref", payref);
         localStorage.setItem("remainingCopies", remainingCopies);
+  
         setMessage("Login successful!");
-        window.location.href = "/dashboard"; // User page
-      } else if (res.data.role === "admin") {
+        window.location.href = `/dashboard`; // ✅ user goes to certificate page
+      } 
+      else if (res.data.role === "admin") {
         localStorage.setItem("adminEmail", res.data.email);
-        console.log("Trying to log in with:", formData.email, formData.password);
-
-
+  
         setMessage("Admin login successful!");
-        window.location.href = "/admin"; // Admin dashboard
+        window.location.href = "/admin"; // ✅ admin dashboard
       }
     } catch (err) {
       setMessage("Invalid email or password.");
     }
   };
+  
 
   return (
     <div className="login-container">

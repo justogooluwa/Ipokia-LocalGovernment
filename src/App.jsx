@@ -47,22 +47,34 @@ import AdminFillSection2 from "./Components/Dashboard/AdminForm2";
 import AdminLayout from "./Components/Dashboard/AdminLayout";
 import Finance from "./Components/Department/Finance";
 import AboutIpokia from "./Pages/AboutIpokia";
+import Footer from "./Components/Footer";
 import "./App.css";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const hideNavbar =
-  ["/login", "/admin", "/certificate", "/dashboard", "/admin/forms", "/admin/rate", "/admin/financial-report", "/admin/manager"]
-    .includes(location.pathname.toLowerCase()) ||
-  /^\/certificates\/[\w-]+$/i.test(location.pathname) ||
-  /^\/admin\/fill-section2\/\d+$/i.test(location.pathname); // ✅ Add this line for fill-section2
+  const hiddenPaths = [
+    "/login",
+    "/admin",
+    "/certificate",
+    "/dashboard",
+    "/admin/forms",
+    "/admin/rate",
+    "/admin/financial-report",
+    "/admin/manager",
+  ];
 
-  
+  const hideFooter =
+    hiddenPaths.includes(location.pathname.toLowerCase()) ||
+    /^\/certificates\/[\w-]+$/i.test(location.pathname) ||
+    /^\/admin\/fill-section2\/\d+$/i.test(location.pathname);
+
+  const hideNavbar = hideFooter; // reuse same condition
 
   return (
     <>
       {!hideNavbar && <Navbar />}
       {children}
+      {!hideFooter && <Footer />}
     </>
   );
 };

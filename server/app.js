@@ -23,9 +23,7 @@ const bcrypt =require('bcrypt')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//app.use(express.static(path.join(__dirname, 'public')));
 
-// 🧱 Ensure Upload Folders Exist
 ["uploads/photos", "uploads/signatures"].forEach((dir) => {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
@@ -164,38 +162,41 @@ app.delete("/api/rate/:id", async (req, res) => {
   }
 });
 
-// 💳 Save Payment with Sequelize
+
 app.post("/api/payment", async (req, res) => {
   const { payref, email, name, amount, copy, paydate, delivery } = req.body;
 
   try {
-    // ❌ Prevent duplicate emails
-    const existingUser = await User.findOne({ where: { email } });
-    if (existingUser) {
-      return res.status(400).json({ message: "Email already used for payment" });
+    
+    const existingPayref = await Payhead.findOne({ where: { payref } });
+    if (existingPayref) {
+      return res.status(400).json({ message: "Payref already exists" });
     }
 
-    // ✅ Save to Payhead
-    const saltRounds=10;
-    const salt = await bcrypt.genSalt(saltRounds);
-    const hashedPayref = await bcrypt.hash(payref, salt);
-
+  
     await Payhead.create({ payref, email, name, amount, copy, paydate, delivery });
-    //await Payhead.create({ hashedPayref, email, name, amount, copy, paydate, delivery });
 
-    // ✅ Save to User with remainingCopies
-    await User.create({ email, payref, remainingCopies: copy });
-   // await User.create({ email, hashedPayref, remainingCopies: copy });
-    console.log('Hashed '+hashedPayref);
+    
+    const saltRounds = 10;
+    const hashedPayref = await bcrypt.hash(payref, saltRounds);
+
+   
+    try {
+      await User.create({ email, payref: hashedPayref, remainingCopies: copy });
+    } catch (err) {
+      console.error("User create failed:", err);
+    }
+
     res.send({ message: "Payment saved successfully" });
   } catch (err) {
+    console.error("Payment save error:", err);
     res.status(500).send({ message: "Error saving payment", error: err });
   }
 });
 
 
 
-// 📝 Save Form with Sequelize + Submission Limit Check
+
 app.post("/api/form", upload.fields([{ name: "photo" }, { name: "signature" }]), async (req, res) => {
   const {
     email, payref, name, address, currentaddress, dob, fname, fno, faddress,
@@ -207,19 +208,20 @@ app.post("/api/form", upload.fields([{ name: "photo" }, { name: "signature" }]),
   const signature = req.files.signature ? `signatures/${req.files.signature[0].filename}` : null;
 
   try {
-    // ✅ Validate User
-    const user = await User.findOne({ where: { email, payref } });
+   
+    const user = await User.findOne({ where: { email } });
+    if (!user) return res.status(400).send("Invalid email or payment reference.");
 
-    if (!user) {
-      return res.status(400).send("Invalid payment reference or email.");
-    }
+    
+    const isMatch = await bcrypt.compare(payref, user.payref);
+    if (!isMatch) return res.status(400).send("Invalid payment reference.");
 
-    // ✅ Check remaining form slots
+    
     if (user.remainingCopies <= 0) {
       return res.status(403).send("You’ve used up all your allowed submissions.");
     }
 
-    // ✅ Create Form Entry
+    
     await Form.create({
       email, payref, name, address, currentaddress, dob, fname, fno, faddress,
       mname, mno, maddress, identification, applicantno,
@@ -227,7 +229,7 @@ app.post("/api/form", upload.fields([{ name: "photo" }, { name: "signature" }]),
       photo, signature
     });
 
-    // ✅ Deduct one copy
+ 
     user.remainingCopies -= 1;
     await user.save();
 
@@ -237,7 +239,8 @@ app.post("/api/form", upload.fields([{ name: "photo" }, { name: "signature" }]),
     res.status(500).send("Error saving form");
   }
 });
-// 📥 Get form by ID
+
+
 app.get("/api/form/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -251,7 +254,7 @@ app.get("/api/form/:id", async (req, res) => {
   }
 });
 
-// Update Section II only
+
 app.put("/api/form/:id/section2", async (req, res) => {
   const { id } = req.params;
   const { identifiername, town, years, identifierfullname, rank } = req.body;
@@ -260,7 +263,7 @@ app.put("/api/form/:id/section2", async (req, res) => {
     const form = await Form.findByPk(id);
     if (!form) return res.status(404).send("Form not found");
 
-    // Only update Section II fields
+    
     form.identifiername = identifiername;
     form.town = town;
     form.years = years;
@@ -277,33 +280,29 @@ app.put("/api/form/:id/section2", async (req, res) => {
 
 
 
-// 🔐 Login User via email + payref
-// app.post("/api/login", async (req, res) => {
-//   const { email, payref } = req.body;
 
-//   try {
-//     const user = await User.findOne({ where: { email, payref } });
-//     if (!user) return res.status(401).send({ message: "Invalid credentials" });
-
-//     res.send({ message: "Login successful", user });
-//   } catch (err) {
-//     res.status(500).send({ message: "Login failed", err });
-//   }
-// });
 
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // User login
-    if (password.startsWith("IPK")) {
-      const user = await User.findOne({ where: { email, payref: password } });
-      if (!user) return res.status(401).send({ message: "Invalid user login" });
+    
+    const user = await User.findOne({ where: { email } });
+    if (user) {
+      const isMatch = await bcrypt.compare(password, user.payref);
+      if (!isMatch) return res.status(401).send({ message: "Invalid payment reference" });
 
-      return res.send({ role: "user", user });
+      return res.send({
+        role: "user",
+        user: {
+          email: user.email,
+          payref: password, 
+          remainingCopies: user.remainingCopies
+        }
+      });
     }
 
-    // Admin login with hashed password
+    // Admin login
     const admin = await Admin.findOne({ where: { email } });
     if (!admin) return res.status(401).send({ message: "Admin not found" });
 
@@ -316,6 +315,7 @@ app.post("/api/login", async (req, res) => {
     res.status(500).send({ message: "Login failed", err });
   }
 });
+
 
 
 

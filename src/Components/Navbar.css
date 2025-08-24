@@ -211,8 +211,29 @@
 .navbar .active {
   color: #e67817 !important;
 }
+.nav-links a {
+  position: relative;
+  transition: all 0.3s ease;
+}
 
+.nav-links a:hover {
+  color: #e67817;
+  transform: translateY(-3px); /* subtle lift */
+}
 
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  padding-left: 25px;   /* shift to the right */
+  color: #e67817;       /* change color on hover */
+  background: rgba(0,0,0,0.05); /* optional highlight */
+}
 
 
 
