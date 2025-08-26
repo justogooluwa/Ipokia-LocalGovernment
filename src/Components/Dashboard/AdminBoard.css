@@ -20,7 +20,10 @@ html, body {
     margin-top: 30px;
     cursor: pointer;
 }
-  
+  h1{
+    font-family: "Signika", sans-serif;
+    margin-bottom: 30px;
+  }
   .admin-content {
     width: 80%;
     padding: 20px;

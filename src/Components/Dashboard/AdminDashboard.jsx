@@ -131,7 +131,7 @@ const AdminDashboard = () => {
               <td>
                 <button onClick={() => handleView(form)}>👁 View</button>
                 <a href={`/certificates/${form.payref}`} target="_blank" rel="noopener noreferrer">
-  🖨 Full Page
+  🖨 Print Certificte
 </a>
 
               </td>

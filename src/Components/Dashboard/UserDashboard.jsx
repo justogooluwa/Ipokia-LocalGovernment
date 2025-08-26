@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
@@ -6,9 +6,20 @@ const UserDashboard = () => {
   const email = localStorage.getItem("email");
   const payref = localStorage.getItem("payref");
 
+  const handleLogout = () => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("payref");
+    window.location.href = "/login"; 
+  };
+
+  useEffect(() => {
+    if (!email || !payref) {
+      navigate("/login");
+    }
+  }, [email, payref, navigate]); 
+
   if (!email || !payref) {
-    navigate("/login");
-    return null;
+    return null; 
   }
 
   return (
@@ -25,6 +36,8 @@ const UserDashboard = () => {
         <button onClick={() => navigate(`/certificates/${payref}`)}>
           🖨️ View / Print Certificate
         </button>
+
+        <p className="admin-btn" onClick={handleLogout}>🚪 Logout</p>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./Form.css"
+import "./AdminForm2.css"
 
 const AdminFillSection2 = () => {
   const { id } = useParams();
@@ -36,27 +37,37 @@ const AdminFillSection2 = () => {
 
   return (
     <>
-     {/* <input
-      type="text"
-      placeholder="Search by PayRef"
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-    />
 
-    {filteredForms.map((form) => (
-      <div key={form.id}>{form.payref} - {form.firstname}</div>
-    ))} */}
     <div>
+      
     <div className="ipo-form-container">
-      <h2>Fill Section II for {form.firstname} {form.lastname}</h2>
+    <img
+  src={`http://localhost:3000/uploads/${form.photo}`}
+  className="photo-img"
+  alt="Photo"
+  crossOrigin="anonymous"
+/>
+      <h2>Fill Section II for {form.name}</h2>
         <div className="form-group full-width">
             <h4>SECTION II: Identification of Applicant</h4>
+            
           </div>
-
+  
           <div className="form-group">
-            <label>I identify that Miss/Mr/Mrs</label>
-            <input name="identifiername" type="text" value={form.identifiername || ""} onChange={handleChange} required/>
-          </div>
+  <label>I identify that</label>
+  <select 
+    name="identifiername" 
+    value={form.identifiername || ""} 
+    onChange={handleChange} 
+    required
+  >
+    <option value="">-- Select --</option>
+    <option value="Miss">Miss</option>
+    <option value="Mr">Mr</option>
+    <option value="Mrs">Mrs</option>
+  </select>
+</div>
+
 
           <div className="form-group">
             <label>Town/Village</label>

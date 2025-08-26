@@ -48,6 +48,9 @@ import AdminLayout from "./Components/Dashboard/AdminLayout";
 import Finance from "./Components/Department/Finance";
 import AboutIpokia from "./Pages/AboutIpokia";
 import Footer from "./Components/Footer";
+import CertificateFlow from "./Pages/CertificateFow";
+import AdminPrivateRoute from "./Components/PrivateRoute";
+import UserPrivateRoute from "./Components/PrivateCertificate";
 import "./App.css";
 
 const Layout = ({ children }) => {
@@ -86,9 +89,21 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/paylogin" element={<Paylogin />} />
-          <Route path="/certificate" element={<Certificate />} />
+          <Route 
+          path="/certificate" 
+          element={
+            <UserPrivateRoute>
+              <Certificate />
+            </UserPrivateRoute>
+          } 
+        />
           <Route path="/login" element={<PayLogin />} />
-          <Route path="/admin" element={<AdminLayout/>} >
+          <Route 
+          path="/admin" 
+          element={
+            <AdminPrivateRoute>
+          <AdminLayout/>
+          </AdminPrivateRoute>}>
           <Route index element={<AdminBoard />}/>
           <Route path="rate" element={<Rate />} />
           <Route path="forms" element={<AdminDashboard />} />
@@ -103,6 +118,7 @@ function App() {
           <Route path="/ajegunleward" element={<Ajegunleward />} />
           <Route path="/agosasaward" element={<Agosasaward />} />
           <Route path="/ipokiaward1" element={<Ipokiaward />} />
+          <Route path="/certificateflow" element={<CertificateFlow />} />
           <Route path="/ijofin" element={<Ijofinward />} />
           <Route path="/ilase" element={<Ilase />} />
           <Route path="/maunward2" element={<Maunward2 />} />

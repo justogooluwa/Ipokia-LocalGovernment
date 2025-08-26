@@ -285,24 +285,27 @@ function AboutIpokia(){
         </ol>
   
         <div className="health">
-          <h1 className="header">HEALTH CENTRES IN THE LOCAL GOVERNMENT</h1>
-          <table className="health-table">
-            <thead>
-              <tr>
-                <th>NAME OF HEALTH CENTRE</th>
-                <th>WARD</th>
-              </tr>
-            </thead>
-            <tbody>
-              {healthcentername.map((center, index) => (
-                <tr key={index}>
-                  <td>{center}</td>
-                  <td>{healthward[index] || ""}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+  <h1 className="header">HEALTH CENTRES IN THE LOCAL GOVERNMENT</h1>
+  <table className="health-table">
+    <thead>
+      <tr>
+        <th>S/N</th> 
+        <th>NAME OF HEALTH CENTRE</th>
+        <th>WARD</th>
+      </tr>
+    </thead>
+    <tbody>
+      {healthcentername.map((center, index) => (
+        <tr key={index}>
+          <td>{index + 1}</td> 
+          <td>{center}</td>
+          <td>{healthward[index] || ""}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
   
         <div className="oba">
           <h1 className="header">OBA’S IN IPOKIA LOCAL GOVERNMENT</h1>

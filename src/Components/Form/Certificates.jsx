@@ -42,6 +42,8 @@ const CertificatePage = ({ form, serial }) => {
     <div className="certificate-page">
       <div className="certificate-modal">
       <div className="certificate-watermark-pattern"></div>
+      <p className="serial-number">OG/LGC/PKA</p>
+      <p className="serial-number">SN: {serial}</p>
         <div className="certificate-header">
           <img
             src={Logo}
@@ -54,20 +56,18 @@ const CertificatePage = ({ form, serial }) => {
   alt="Photo"
   crossOrigin="anonymous"
 />
-          <h2>IPOKIA LOCAL GOVERNMENT COUNCIL</h2>
+          <h2>IPOKIA LOCAL GOVERNMENT</h2>
           <p>Ipokia Ogun State of Nigeria </p>
-          <h1 className="subheading">Certificate of Local Government of Origin</h1>
+          <h1 className="subheading">Certificate of Origin</h1>
           {/* <p className="subheading">we hereby certify that</p>
           <h3 className="name">{form.name}</h3> */}
-          <p className="serial-number">OG/LGC/PKA</p>
-          <p className="serial-number">Serial No: {serial}</p>
 
         </div>
 
         <div className="certificate-body">
         <h4>
-  This is to certify that from enquiry made, the person photograph who is affixed <strong>{form.name}</strong> of 
-      <strong> {form.address}</strong>, of native of <strong>{form.town}</strong> 
+  This is to certify that from enquiry made, the person whose photograph is affixed <strong>{form.name}</strong> of 
+      <strong> {form.address}</strong>, of native of <strong>{form.town} </strong> 
   in Ipokia Local Government Area of Ogun State, Nigeria. Ancestral, Historical and Administrative records verified 
   by the Local Government attested to this Fact.
 </h4>

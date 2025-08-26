@@ -4,6 +4,11 @@ import "./AdminBoard.css";
 
 const AdminLayout = () => {
   const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("adminEmail");
+    window.location.href = "/login"; 
+  };
+  
 
   return (
     <div className="admin-container">
@@ -13,6 +18,7 @@ const AdminLayout = () => {
         <p className="admin-btn" onClick={() => navigate("/admin/financial-report")}>Financial Reports</p>
         <p className="admin-btn" onClick={() => navigate("/admin/manager")}>Create New Admin</p>
         <p className="admin-btn" onClick={() => navigate("/admin")}>📝Forms Awaiting Attestation</p>
+        <p className="admin-btn" onClick={handleLogout}>🚪 Logout</p>
       </div>
 
       <div className="admin-content">

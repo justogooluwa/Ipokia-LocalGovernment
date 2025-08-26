@@ -16,7 +16,7 @@ const AdminBoard = () => {
 
   return (
     <div>
-      <h3>This is your default AdminBoard home content</h3>
+      <h1>Forms Awaiting Attestation</h1>
       {pendingForms.length > 0 ? (
         pendingForms.map((form) => (
           <div key={form.id}>

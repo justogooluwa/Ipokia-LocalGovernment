@@ -271,12 +271,38 @@ app.put("/api/form/:id/section2", async (req, res) => {
     form.rank = rank;
 
     await form.save();
-    res.send("Section II updated successfully");
+
+    
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "lyndseyadam22@gmail.com", 
+        pass: "ilat nwjr hpei qdxt",    
+      },
+    });
+
+    const mailOptions = {
+      from: '"Ipokia LG" <ogooluwaakinleye@gmail.com>',
+      to: form.email,
+      subject: "Your Certificate is Ready",
+      html: `
+        <h3>Hello ${form.name},</h3>
+        <p>We are pleased to inform you that your <strong>certificate is ready</strong>.</p>
+        <p>You can now log in with your payment reference to view and download your certificate.</p>
+        <br>
+        <p>Best Regards,<br/>Ipokia Local Government</p>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.send("Section II updated and email sent successfully ✅");
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error updating Section II");
+    res.status(500).send("Error updating Section II and sending email");
   }
 });
+
 
 
 

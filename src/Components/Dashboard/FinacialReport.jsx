@@ -46,7 +46,7 @@ const PayheadBreakdown = () => {
             <tr>
               <th>S/N</th>
               <th>Name</th>
-              <th>PayRef</th>
+              <th>Date</th>
               <th>Amount (₦)</th>
             </tr>
           </thead>
@@ -55,7 +55,7 @@ const PayheadBreakdown = () => {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item.name}</td>
-                <td>{item.payref}</td>
+                <td>{new Date(item.createdAt).toLocaleString()}</td>
                 <td>#{Number(item.amount).toLocaleString()}</td>
               </tr>
             ))}

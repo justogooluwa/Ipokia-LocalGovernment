@@ -158,8 +158,7 @@ function Navbar() {
 </div>
 
 <div className="dropdown" onClick={closeMenu}>
-  <NavLink to="/Paylogin" className={({ isActive }) => isActive ? "active" : ""}>Certificate of Origin</NavLink>
-  {/* <NavLink to="/certificate" className={({ isActive }) => isActive ? "active" : ""}>Certificate of Origin</NavLink> */}
+  <NavLink to="/certificateflow" className={({ isActive }) => isActive ? "active" : ""}>Certificate of Origin</NavLink>
 </div>
 <NavLink to="/login" className="login-link" onClick={closeMenu}>
     <button className="login-btn">Login</button>
