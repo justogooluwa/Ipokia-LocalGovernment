@@ -98,7 +98,7 @@
     display: flex;
     justify-content: flex-end; /* push to the right side */
     gap: 80px;                 /* small space between secretary & chairman */
-    margin-top: 40px;
+    margin-top: 10px;
   }
   
   .signature-block {
@@ -118,6 +118,7 @@
   }
  .subheading{
    margin-right: 80px;
+   text-decoration: underline 3px;
  }
   
   
@@ -166,4 +167,29 @@
       background: transparent !important;
     }
   }
-    
+  @media print {
+    .certificate-header p {
+      text-align: center !important;
+      margin: 0 auto !important;
+      display: block;
+    }
+  }
+ 
+@media print {
+  .certificate-header > p:not(.serial-number) {
+    text-align: center !important;
+    margin: 0 auto !important;
+    display: block;
+  }
+
+  .certificate-header .serial-number {
+    display: block;
+    width: 100%;
+    text-align: right !important;
+    margin: 0;
+    padding-right: 20px !important;
+  }
+}
+
+
+  
