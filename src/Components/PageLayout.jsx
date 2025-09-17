@@ -1,5 +1,5 @@
 import React from "react";
-import pageLayout from "../../src/assets/UE-Suit-bg.webp";
+import pageLayout from "../../src/assets/pg2.jpg";
 import "./PageLayout.css";
 
 function PageLayout({ title }) {

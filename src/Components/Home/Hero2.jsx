@@ -6,14 +6,14 @@ import "aos/dist/aos.css";
 
 function HeroSection() {
   React.useEffect(() => {
-    AOS.init({ duration: 2000, once: false }); // duration is optional
+    AOS.init({ duration: 2000, once: false }); 
   }, []);
   return (
     <div className="hero-section1">
       <div className="hero-left" data-aos="fade-up">
         <img src={governor} alt="Governor" />
       </div>
-      <div className="hero-right">
+      <div className="hero-right"  data-aos="fade-left">
         <h1>
           Ipokia,Safe
           <br />

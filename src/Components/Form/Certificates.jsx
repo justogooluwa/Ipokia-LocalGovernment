@@ -42,27 +42,27 @@ const CertificatePage = ({ form, serial }) => {
     <div className="certificate-page">
       <div className="certificate-modal">
       <div className="certificate-watermark-pattern"></div>
-      <p className="serial-number">OG/LGC/PKA</p>
-      <p className="serial-number">SN: {serial}</p>
-        <div className="certificate-header">
-          <img
-            src={Logo}
-            alt="Logo"
-            className="logo"
-          />
-           <img
-  src={`http://localhost:3000/uploads/${form.photo}`}
-  className="passport-img"
-  alt="Photo"
-  crossOrigin="anonymous"
-/>
-          <h2>IPOKIA LOCAL GOVERNMENT</h2>
-          <p>Ipokia Ogun State of Nigeria </p>
-          <h1 className="subheading">Certificate of Origin</h1>
-          {/* <p className="subheading">we hereby certify that</p>
-          <h3 className="name">{form.name}</h3> */}
+      <div className="certificate-top">
+  <div className="serial-numbers">
+    <p className="serial-number">OG/LGC/PKA</p>
+    <p className="serial-number">SN: {serial}</p>
+  </div>
 
-        </div>
+  <div className="certificate-header">
+    <img src={Logo} alt="Logo" className="logo" />
+    <h2>IPOKIA LOCAL GOVERNMENT</h2>
+    <p>Ipokia Ogun State of Nigeria </p>
+    <h1 className="subheading">Certificate of Origin</h1>
+  </div>
+
+  <img
+    src={`http://localhost:3000/uploads/${form.photo}`}
+    className="passport-img"
+    alt="Photo"
+    crossOrigin="anonymous"
+  />
+</div>
+
 
         <div className="certificate-body">
         <h4>
@@ -88,7 +88,8 @@ const CertificatePage = ({ form, serial }) => {
           <div className="certificate-footer">
   <div className="signature-block">
     <img
-      src={`http://localhost:3000/uploads/${form.signature}`}
+      src={`http://localhost:3000/uploads/signatures/1751812382772_signature3.png`}
+      //src={`http://localhost:3000/uploads/signatures/${form.signature}`}
       className="signature-img"
       alt="Signature"
       crossOrigin="anonymous"
@@ -98,7 +99,8 @@ const CertificatePage = ({ form, serial }) => {
 
   <div className="signature-block">
     <img
-      src={`http://localhost:3000/uploads/${form.signature}`}
+       src={`http://localhost:3000/uploads/signatures/1751812382772_signature3.png`}
+     // src={`http://localhost:3000/uploads/${form.signature}`}
       className="signature-img"
       alt="Signature"
       crossOrigin="anonymous"
@@ -113,7 +115,7 @@ const CertificatePage = ({ form, serial }) => {
       </div>
     </div>
     
-    <button onClick={() => window.print()}>🖨️ Print Certificate</button>
+    <button onClick={() => window.print()} style={{textAlign:'center'}}>🖨️ Print Certificate</button>
     </>
   );
 };

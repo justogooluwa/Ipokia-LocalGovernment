@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./PayLogin.css";
-import IpokiaLogo from "../../assets/logo.jpg"; // ✅ your logo here
+import IpokiaLogo from "../../assets/logo.jpg"; 
 
 const IpokiaLogin = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });

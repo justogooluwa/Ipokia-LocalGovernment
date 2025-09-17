@@ -57,7 +57,7 @@ function Navbar() {
         <div className="nested-dropdown">
           <NavLink to="#" className={() => ""}>Supervisory Counsellors <FaChevronRight style={{ marginLeft: 4 }} /></NavLink>
           <div className="nested-dropdown-content">
-            <NavLink to="#" className={() => ""}>Finance</NavLink>
+           
             <NavLink to="/health" className={() => ""}>Health & Medical</NavLink>
             <NavLink to="/education" className={() => ""}>Education</NavLink>
             <NavLink to="/agric" className={() => ""}>Agric</NavLink>
@@ -67,7 +67,7 @@ function Navbar() {
         
         
         </div>
-    <NavLink to="/adviser" className={() => ""}>Special Adviser</NavLink>
+    <NavLink to="/adviser" className={() => ""}>Special Advisers</NavLink>
   </div>
 </div>
 
@@ -130,7 +130,7 @@ function Navbar() {
   <NavLink to="#" className={() => ""}>Info <FaChevronDown style={{ marginLeft: 4 }} /></NavLink>
   <div className="dropdown-content">
     <NavLink to="/aboutipokia" className={() => ""}>AboutIpokia</NavLink>
-    <NavLink to="#" className={() => ""}>Press</NavLink>
+    <NavLink to="#" className={() => ""}>News</NavLink>
   </div>
 </div>
 
@@ -141,14 +141,14 @@ function Navbar() {
     <div className="nested-dropdown">
           <NavLink to="#" className={() => ""}>Departmental Heads<FaChevronRight style={{ marginLeft: 4 }} /></NavLink>
           <div className="nested-dropdown-content">
-          <NavLink to="#" className={() => ""}>Director General Services and Administation(DGSA)</NavLink>
+          <NavLink to="/dgsa" className={() => ""}>Director General Services and Administration(DGSA)</NavLink>
             <NavLink to="/finance" className={() => ""}>Director of Finance / Treasurer</NavLink>
             <NavLink to="/works" className={() => ""}>Director of Works & Housing</NavLink>
             <NavLink to="/sport" className={() => ""}>Director of Information Education & Sports</NavLink>
             <NavLink to="/budget" className={() => ""}>Director of Budget Research Planning & Statistics</NavLink>
             <NavLink to="/social" className={() => ""}>Director Community Development</NavLink>
             <NavLink to="/audit" className={() => ""}>Internal Audit</NavLink>
-            <NavLink to="/health" className={() => ""}>Health Secretary</NavLink>
+            <NavLink to="/healthsecretary" className={() => ""}>Health Secretary</NavLink>
             <NavLink to="/agriculture" className={() => ""}>Director of Agriculture & Natural Resources</NavLink>
             <NavLink to="/water" className={() => ""}>Director of Water & Enviromental Sanitation </NavLink>
             <NavLink to="/nulge" className={() => ""}>Nigeria Union of Local Government Employees</NavLink>

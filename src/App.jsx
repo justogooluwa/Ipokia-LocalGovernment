@@ -51,6 +51,9 @@ import Footer from "./Components/Footer";
 import CertificateFlow from "./Pages/CertificateFow";
 import AdminPrivateRoute from "./Components/PrivateRoute";
 import UserPrivateRoute from "./Components/PrivateCertificate";
+import Health2 from "./Components/Department/Health2";
+import DGSA from "./Components/Department/DGSA";
+import CaptchaGate from "./Components/CaptchGate";
 import "./App.css";
 
 const Layout = ({ children }) => {
@@ -148,6 +151,9 @@ function App() {
           <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="/finance" element={<Finance />} />
           <Route path="/aboutipokia" element={<AboutIpokia />} />
+          <Route path="/healthsecretary" element={<Health2 />} />
+          <Route path="/dgsa" element={<DGSA />} />
+          <Route path="/captchagate" element={<CaptchaGate />} />
         </Routes>
       </Layout>
     </Router>
